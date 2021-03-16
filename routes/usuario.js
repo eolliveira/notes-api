@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const {Router} = require('express');
+const router = Router();
 
 router.get('/', function(req, res) {
     res.json([{ nome: `Erick`, email: `erick@gmail.com` }]);
@@ -13,7 +13,7 @@ router.put('/:id?', (req, res) => {
     res.send('Editar um usuário');
 });
 
-router.delete('/usuario', (req, res) => {
+router.delete('/:id?', (req, res) => {
     res.send('Remover um usuário');
 });
 

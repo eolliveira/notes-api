@@ -7,7 +7,7 @@ const nota = require('./routes/nota');
 const tag = require('./routes/tag');
 const port = 3000;
 
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 
 app.use('/usuario', usuario);
 app.use('/checklist', checklist);
