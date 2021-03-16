@@ -1,26 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+const usuario = require('./routes/usuario');
+const checklist = require('./routes/checklist');
+const nota = require('./routes/nota');
+const tag = require('./routes/tag');
 const port = 3000;
 
-app.get('/usuario/:id?', (req, res) => {
-    if (req.params.id) {
-        res.send('Retorna um usuário');
-    }
-    res.send('Retorna usuários');
-});
+app.use(bodyParser.json);
 
-app.post('/usuario/', (req, res) => {
-    res.send('Inclui usuário');
-});
-
-app.put('/usuario', (req, res) => {
-    res.send('Editar um usuário');
-});
-
-app.delete('/usuario', (req, res) => {
-    res.send('Remover um usuário');
-});
+app.use('/usuario', usuario);
+app.use('/checklist', checklist);
+app.use('/nota', nota);
+app.use('/tag', tag);
 
 app.listen(port, () => {
     console.log(`Aplicação rodando em http://localhost:${port}`)
-})
+});
