@@ -1,8 +1,10 @@
 const {Router} = require('express');
 const router = Router();
+const controller = require('../controller/usuario');
+const database = require('../models');
 
-router.get('/', function(req, res) {
-    res.json([{ nome: `Erick`, email: `erick@gmail.com` }]);
+router.get('/:id?', function(req, res) {
+    res.send({})
 });
 
 router.post('/', (req, res) => {
@@ -17,4 +19,4 @@ router.delete('/:id?', (req, res) => {
     res.send('Remover um usuário');
 });
 
-module.exports = router
+module.exports = router;
