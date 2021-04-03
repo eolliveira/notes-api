@@ -1,7 +1,16 @@
 {
-    "username": "postgres",
-    "password": "123",
-    "database": "notas",
-    "host": "localhost",
-    "dialect": "postgres"
+    "development": {
+        "username": "postgres",
+        "password": "123",
+        "database": "notas",
+        "host": "localhost",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "postgres",
+        "password": "123",
+        "database": "notas",
+        "host": "localhost",
+        "dialect": "postgres"
+    }
 }

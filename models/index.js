@@ -1,5 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const options = require('../config/database');
+const { NODE_ENV } = process.env;
+
+console.log(NODE_ENV);
+let options = require('../config/database');
 const _Usuario = require('./usuario');
 const _Nota = require('./nota');
 const _Tag = require('./tag');
@@ -13,6 +16,9 @@ const database = {};
 //    host: 'localhost',
 //    dialect: 'postgres',
 //};
+
+options = options[NODE_ENV]
+
 
 const sequelize = new Sequelize(options);
 
