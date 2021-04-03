@@ -1,5 +1,5 @@
 const { Checklist } = require('../models');
-const checklist = require('../models/checklist');
+//const checklist = require('../models/checklist');
 const controller = {};
 
 controller.getChecklist = async (id = null) => {

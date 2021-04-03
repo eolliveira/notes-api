@@ -1,5 +1,5 @@
 const { Tag } = require('../models');
-const tag = require('../models/tag');
+//const tag = require('../models/tag');
 const controller = {};
 
 controller.getTags = async (id = null) => {
@@ -18,7 +18,7 @@ controller.save = async (tag) => {
 }
 
 controller.edit = async (id, tag) => {
-   await Tag.update(usuario, {
+   await Tag.update(tag, {
       where: { id },
    });
 

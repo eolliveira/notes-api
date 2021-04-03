@@ -8,7 +8,7 @@ router.get('/:id?', async (req, res) =>  {
     res.send(checklist);
 });
 
-router.post('/:id', async (req, res)  => {
+router.post('/:id?', async (req, res)  => {
     try{
         const { body } = req;
         const checklist = await controller.save(body);
@@ -31,7 +31,7 @@ router.put('/:id', async (req, res)  => {
     }
 });
 
-router.delete('/:id', async (req, res)  => {
+router.delete('/:id?', async (req, res)  => {
     try {
         const { id } = req.params;
         await controller.remove(id);

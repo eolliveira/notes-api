@@ -1,17 +1,18 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const options = require('../config/database');
 const _Usuario = require('./usuario');
 const _Nota = require('./nota');
 const _Tag = require('./tag');
 const _Checklist = require('./checklist');
 const database = {};
 
-const options = {
-    username: 'postgres',
-    password: '123',
-    database: 'notas',
-    host: 'localhost',
-    dialect: 'postgres',
-};
+//const options = {
+//    username: 'postgres',
+//    password: '123',
+//    database: 'notas',
+//    host: 'localhost',
+//    dialect: 'postgres',
+//};
 
 const sequelize = new Sequelize(options);
 
@@ -23,7 +24,7 @@ let Checklist = _Checklist(sequelize, DataTypes);
 database['Usuario'] = Usuario;
 database['Nota'] = Nota;
 database['Tag'] = Tag;
-database['Chcklist'] = Checklist;
+database['Checklist'] = Checklist;
 
 for(const key in database){
     if(database[key].associate) database[key].associate(database);

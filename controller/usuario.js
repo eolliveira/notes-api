@@ -1,5 +1,5 @@
 const { Usuario } = require('../models');
-const usuario = require('../models/usuario');
+//const usuario = require('../models/usuario');
 const controller = {};
 
 controller.getUsuarios = async (id = null) => {
