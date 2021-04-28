@@ -1,5 +1,5 @@
 const { Tag } = require('../models');
-//const tag = require('../models/tag');
+const tag = require('../models/tag');
 const controller = {};
 
 controller.getTags = async (id = null) => {

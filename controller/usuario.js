@@ -1,6 +1,8 @@
 const { Usuario } = require('../models');
-//const usuario = require('../models/usuario');
+const usuario = require('../models/usuario');
 const controller = {};
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config/security');
 
 controller.getUsuarios = async (id = null) => {
     let result = [];
@@ -32,5 +34,22 @@ controller.remove = async (id) => {
       throw new Error(error);
    }
 };
+
+
+//LOGIN
+controller.login = async (email, senha) => {
+   try {
+     const usuario = await Usuario.scope('login').findOne({ where: { email } });
+  
+     if (usuario.senha != senha) return false;
+  
+     return jwt.sign({ id: usuario.id }, secret, {
+       expiresIn: '24h',
+     });
+   } catch (error) {
+     console.log(error);
+     throw new Error(error);
+   }
+ };
 
 module.exports = controller;

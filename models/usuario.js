@@ -27,7 +27,17 @@ module.exports = function(sequelize, DataTypes) {
         },
          {
            tableName: 'usuario',
-           timestamps: false
+           timestamps: false,
+           defaultScope: {
+             attributes: {
+               exclude: ['senha'],
+             },
+           },
+           scopes: {
+             login: {
+               attributes: ['id', 'senha'],
+             }
+           }
          }
       );
 

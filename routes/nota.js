@@ -2,20 +2,23 @@ const {Router} = require('express');
   const router = Router();
   const controller = require('../controller/nota');
 
+  //LISTA
   router.get('/:id?', async (req, res) => {
     const { id } = req.params;
     const notas = await controller.getNotas(id);
     res.send(notas);      
   });
 
+  //ADICIONA
   router.post('/', async (req, res) => {
     try{
       const { body } = req;
       const nota = await controller.save(body);
       res.send(nota);
-  }catch(error){
-      res.status(500).send(error);
-  }
+    }catch(error){
+        res.status(500).send(error);
+    }
+    
   });
 
   router.put('/:id', async (req, res) => {

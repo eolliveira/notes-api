@@ -1,5 +1,5 @@
 const { Nota } = require('../models');
-//const nota = require('../models/nota');
+const nota = require('../models/nota');
 const controller = {};
 
 controller.getNotas = async (id = null) => {

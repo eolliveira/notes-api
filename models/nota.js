@@ -42,11 +42,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
           },
       },
-      {
-          tableName: 'nota',
-          timestamps: false,
-      }
+        {
+            tableName: 'nota',
+            timestamps: false,
+        }
       );
+      
       Nota.associate = function (models) {
           this.belongsTo(models.Usuario, {
               foreignKey: 'usuarioId',

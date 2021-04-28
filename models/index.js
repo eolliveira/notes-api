@@ -1,24 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const { NODE_ENV } = process.env;
-
-console.log(NODE_ENV);
-let options = require('../config/database');
+const options = require('../config/database');
 const _Usuario = require('./usuario');
 const _Nota = require('./nota');
 const _Tag = require('./tag');
 const _Checklist = require('./checklist');
 const database = {};
-
-//const options = {
-//    username: 'postgres',
-//    password: '123',
-//    database: 'notas',
-//    host: 'localhost',
-//    dialect: 'postgres',
-//};
-
-options = options[NODE_ENV]
-
 
 const sequelize = new Sequelize(options);
 
@@ -35,16 +21,6 @@ database['Checklist'] = Checklist;
 for(const key in database){
     if(database[key].associate) database[key].associate(database);
 }
-
-
-Tag.findAll({
-    include: [
-        {
-            model: Nota,
-        },
-    ],
-}).then((result) => console.log(result));
-
 
 sequelize.authenticate()
 .then(() => console.log(`Conexão com banco ${options.database} foi bem sucedida`))
