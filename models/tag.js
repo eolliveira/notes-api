@@ -28,11 +28,11 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
     });
 
-    Tag.associate = function (models) {
-        this.belongsTo(models.Nota, {
-            foreignKey: 'notaId',
-        });
-    };
+    // Tag.associate = function (models) {
+    //     this.belongsTo(models.Nota, {
+    //         foreignKey: 'notaId',
+    //     });
+    // };
 
     return Tag;
 };

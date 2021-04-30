@@ -1,5 +1,7 @@
-const { Checklist } = require('../models');
+//const { where } = require('sequelize/types');
+const { Checklist, Nota } = require('../models');
 const checklist = require('../models/checklist');
+const nota = require('../models/nota');
 const controller = {};
 
 controller.getChecklist = async (id = null) => {
@@ -25,10 +27,32 @@ controller.edit = async (id, checklist) => {
    return await controller.getChecklist[id];
 }
 
-controller.remove = async (id) => {
+controller.remove = async (notaId, id) => {
    try {
-   return await Checklist.destroy({ where: { id } });
+   return await Checklist.destroy({ where: { id, notaId } });
    } catch(error) {
+      console.log(error);
+      throw new Error(error);
+   }
+};
+
+
+controller.getByUsuarioId = async (usuarioId) => {
+   try {
+      return await Checklist.findAll({
+         include: [
+            {
+               model: Nota,
+               as: "nota",
+               required: true,
+               where: {
+                  usuarioId,
+               },
+            },
+         ],
+      });
+   } catch(error) {
+      console.log(error);
       throw new Error(error);
    }
 };

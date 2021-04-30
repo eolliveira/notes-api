@@ -13,6 +13,12 @@ let Nota = _Nota(sequelize, DataTypes);
 let Tag = _Tag(sequelize, DataTypes);
 let Checklist = _Checklist(sequelize, DataTypes);
 
+Checklist.belongsTo(Nota, { as: 'nota', foreignKey: 'notaId'});
+Nota.hasMany(Checklist, { as: 'checklists', foreignKey: 'notaId'});
+Nota.hasMany(Tag, { as: 'tags', foreignKey: 'notaId'});
+Nota.belongsTo(Usuario, { as: 'usuario', foreignKey: 'usuarioId'});
+Tag.belongsTo(Nota, { as: 'nota', foreignKey: 'notaId'});
+
 database['Usuario'] = Usuario;
 database['Nota'] = Nota;
 database['Tag'] = Tag;

@@ -23,20 +23,20 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       concluida: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: false
+        defaultValue: 0,
       }
     }, {
       tableName: 'checklist',
       timestamps: false,
   });
 
-  Checklist.associate = function (models) {
-    this.belongsTo(models.Nota, {
-        foreignKey: 'notaId',
-    });
-};
+//   Checklist.associate = function (models) {
+//     this.belongsTo(models.Nota, {
+//         foreignKey: 'notaId',
+//     });
+// };
 
   return Checklist;
 };

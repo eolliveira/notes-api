@@ -1,5 +1,4 @@
-const { Tag } = require('../models');
-const tag = require('../models/tag');
+const { Tag, Nota } = require('../models');
 const controller = {};
 
 controller.getTags = async (id = null) => {
@@ -25,10 +24,45 @@ controller.edit = async (id, tag) => {
    return await controller.getTags[id];
 }
 
-controller.remove = async (id) => {
+// controller.remove = async (id) => {
+//    try {
+//    return await Tag.destroy({ where: { id } });
+//    } catch(error) {
+//       throw new Error(error);
+//    }
+// };
+
+controller.remove = async (notaId, id) => {
    try {
-   return await Tag.destroy({ where: { id } });
-   } catch(error) {
+      return await Tag.destroy({ 
+         where: { 
+            id,
+            notaId,
+         },
+      });
+   } catch (error) {
+      console.log(error);
+      throw new Error(error);
+   }
+};
+
+
+controller.getByUsuarioId = async (usuarioId) => {
+   try {
+      return await Tag.findAll({ 
+         include: [
+            { 
+               model: Nota,
+               required: true,
+               as: 'nota',
+               where: {
+                  usuarioId,
+               }
+            },
+         ],
+      });
+   } catch (error) {
+      console.log(error);
       throw new Error(error);
    }
 };

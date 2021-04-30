@@ -48,11 +48,11 @@ module.exports = function(sequelize, DataTypes) {
         }
       );
       
-      Nota.associate = function (models) {
-          this.belongsTo(models.Usuario, {
-              foreignKey: 'usuarioId',
-          });
-      };
+      // Nota.associate = function (models) {
+      //     this.belongsTo(models.Usuario, {
+      //         foreignKey: 'usuarioId',
+      //     });
+      // };
 
       return Nota;
     };
