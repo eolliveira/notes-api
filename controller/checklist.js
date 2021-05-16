@@ -1,4 +1,3 @@
-//const { where } = require('sequelize/types');
 const { Checklist, Nota } = require('../models');
 const checklist = require('../models/checklist');
 const nota = require('../models/nota');

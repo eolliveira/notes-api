@@ -1,14 +1,19 @@
 const {Router} = require('express');
+const jwt = require('jsonwebtoken');
 const router = Router();
-const controller = require('../controller/usuario');
+const controller = require('../controller/default');
+const { Usuario} = require('../models');
 
 //LISTA
-router.get('/:id?', async (req, res) => {
-    const { id } = req.params;
-    const usuarios = await controller.getUsuarios(id);
-    res.send(usuarios);
-});
-
+router.get('/', async (req, res) => {
+    const { token } = req;
+  
+    const { id } = jwt.decode(token);
+  
+    const usuario = await controller.getById(Usuario, id);
+  
+    res.send(usuario);
+  });
 //ADICIONA
 router.post('/', async (req, res) => {
     try{
@@ -22,12 +27,13 @@ router.post('/', async (req, res) => {
 });
 
 //ALTERA
-router.put('/:id?', async (req, res) => {
+router.put('/', async (req, res) => {
     try{
-        const { body } = req;
-        const { id } = req.params;
+        const { body, token } = req;
 
-        const usuario = await controller.edit(id, body);
+        const { id } = jwt.decode(token);
+
+        const usuario = await controller.edit(Usuario, body, id);
         res.send(usuario);
 
     }catch(error){

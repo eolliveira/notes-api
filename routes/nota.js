@@ -2,7 +2,6 @@ const {Router} = require('express');
   const router = Router();
   const controller = require('../controller/nota');
   const controllerNota = require('../controller/nota');
-  const { Nota } = require('../models');
 
   //LISTA
   router.get('/:id', async (req, res) => {

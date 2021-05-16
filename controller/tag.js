@@ -24,14 +24,6 @@ controller.edit = async (id, tag) => {
    return await controller.getTags[id];
 }
 
-// controller.remove = async (id) => {
-//    try {
-//    return await Tag.destroy({ where: { id } });
-//    } catch(error) {
-//       throw new Error(error);
-//    }
-// };
-
 controller.remove = async (notaId, id) => {
    try {
       return await Tag.destroy({ 

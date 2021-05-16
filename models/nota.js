@@ -47,12 +47,6 @@ module.exports = function(sequelize, DataTypes) {
             timestamps: false,
         }
       );
-      
-      // Nota.associate = function (models) {
-      //     this.belongsTo(models.Usuario, {
-      //         foreignKey: 'usuarioId',
-      //     });
-      // };
 
       return Nota;
     };

@@ -1,5 +1,3 @@
-//const Sequelize = require('sequelize');
-
 module.exports = function(sequelize, DataTypes) {
   const Tag = sequelize.define(
     'Tag', 
@@ -27,12 +25,6 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'tag',
         timestamps: false,
     });
-
-    // Tag.associate = function (models) {
-    //     this.belongsTo(models.Nota, {
-    //         foreignKey: 'notaId',
-    //     });
-    // };
 
     return Tag;
 };

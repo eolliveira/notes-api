@@ -1,4 +1,3 @@
-//const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   const Checklist =  sequelize.define(
     'Checklist',
@@ -31,12 +30,6 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'checklist',
       timestamps: false,
   });
-
-//   Checklist.associate = function (models) {
-//     this.belongsTo(models.Nota, {
-//         foreignKey: 'notaId',
-//     });
-// };
 
   return Checklist;
 };

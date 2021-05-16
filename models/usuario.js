@@ -1,3 +1,7 @@
+const bcrypt = require('bcrypt');
+const { saltRounds } = require('../config/security');
+const { Usuario } = require(".");
+
 module.exports = function(sequelize, DataTypes) {
     const Usuario = sequelize.define(
     'Usuario', 
@@ -28,6 +32,11 @@ module.exports = function(sequelize, DataTypes) {
          {
            tableName: 'usuario',
            timestamps: false,
+           hooks: {
+             beforeValidate: (usuario) => {
+               if(usuario.senha) usuario.senha = bcrypt.hashSync(usuario.senha, saltRounds);
+             },
+           },
            defaultScope: {
              attributes: {
                exclude: ['senha'],
@@ -40,13 +49,7 @@ module.exports = function(sequelize, DataTypes) {
            }
          }
       );
-
-    //   Usuario.associate = function (models) {
-    //     this.hasMany(models.Nota, {
-    //         foreignKey: 'usuarioId',
-    //     });
-    // };
-
+      
       return Usuario;
     };
 
